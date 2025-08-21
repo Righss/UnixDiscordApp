@@ -8,7 +8,6 @@ const { verifyKeyMiddleware, InteractionType, InteractionResponseType } = requir
 const app = express();
 const PUBLIC_KEY = process.env.DISCORD_PUBLIC_KEY;
 
-// carrega comandos da pasta commands (suporta subpastas)
 const commands = new Map();
 const base = path.join(__dirname, 'commands');
 for (const entry of fs.readdirSync(base, { withFileTypes: true })) {
@@ -31,7 +30,6 @@ for (const entry of fs.readdirSync(base, { withFileTypes: true })) {
 app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
   const { type, data, member, user } = req.body;
 
-  // handshake do Discord
   if (type === InteractionType.PING) {
     return res.send({ type: InteractionResponseType.PONG });
   }

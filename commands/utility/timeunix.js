@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('discord.js');
 const { DateTime } = require('luxon');
 
 module.exports = {
-  // usado pelo deploy-commands.js
+  //deploy-commands.js
   data: new SlashCommandBuilder()
     .setName('getunixtime')
     .setDescription('Tries to make a unix time with the inserted time value')
@@ -11,22 +11,20 @@ module.exports = {
       option.setName('time')
         .setDescription('HH:MM (24h)')
         .setRequired(true)
-        .setMinLength(4)   // ex: 9:30
-        .setMaxLength(5)   // ex: 09:30
+        .setMinLength(4)
+        .setMaxLength(5)
     ),
 
-  // usado pelo server HTTP (botless)
   async handle({ options, userId }) {
     const time = options?.find(o => o.name === 'time')?.value;
 
     const regex = /^([0-9]|[01]\d|2[0-3]):([0-5]\d)$/;
     if (!regex.test(time)) {
-      return { content: 'Wrong Format (use HH:MM, ex: 09:30 ou 9:30)', ephemeral: true };
+      return { content: 'Wrong Format (use HH:MM)', ephemeral: true };
     }
 
     const [hour, minute] = time.split(':').map(Number);
 
-    // ajuste seu mapeamento por usuário aqui
     const tz = (userId === '261987640470011915') ? 'America/Sao_Paulo' : 'Europe/London';
 
     const todayInTz = DateTime.now().setZone(tz);
@@ -38,7 +36,7 @@ module.exports = {
     }, { zone: tz });
 
     if (!dt.isValid) {
-      return { content: `Timezone ou data/hora inválidos. TZ usado: ${tz}`, ephemeral: true };
+      return { content: `Timezone or Date invalid. TZ used: ${tz}`, ephemeral: true };
     }
 
     const unix = Math.floor(dt.toSeconds());

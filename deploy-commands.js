@@ -4,12 +4,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const commands = [];
-// Pega todas as pastas dentro de commands/
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
-	// Pega todos os arquivos .js dentro de cada subpasta
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
@@ -17,7 +15,6 @@ for (const folder of commandFolders) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
 
-		// Aceita command com data + (execute ou handle)
 		if ('data' in command && ('execute' in command || 'handle' in command)) {
 			commands.push(command.data.toJSON());
 		} else {
@@ -26,14 +23,12 @@ for (const folder of commandFolders) {
 	}
 }
 
-// Constrói REST
 const rest = new REST({ version: '10' }).setToken(token);
 
 (async () => {
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
-		// Atualiza comandos no guild
 		const data = await rest.put(
 			Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands },
