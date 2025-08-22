@@ -31,7 +31,7 @@ module.exports = {
 
   async handle({ options, userId }) {
     const time = options?.find(o => o.name === 'time')?.value;
-    const tz = interaction.options.getString('timezone');
+    const tz = options?.find(o => o.name === 'timezone')?.value;
 
     const regex = /^([0-9]|[01]\d|2[0-3]):([0-5]\d)$/;
     if (!regex.test(time)) {
