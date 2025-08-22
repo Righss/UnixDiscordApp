@@ -19,11 +19,11 @@ module.exports = {
       .setDescription('Selecione a timezone')
         .setRequired(true)
         .addChoices(
-          { name: 'São Paulo (GMT-3)', value: 'America/Sao_Paulo' },
-          { name: 'Nova York (GMT-5)', value: 'America/New_York' },
-          { name: 'Londres (GMT+0)', value: 'Europe/London' },
-          { name: 'Berlim (GMT+1)', value: 'Europe/Berlin' },
-          { name: 'Tóquio (GMT+9)', value: 'Asia/Tokyo' },
+          { name: 'Brazil (GMT-3)', value: 'America/Sao_Paulo' },
+          { name: 'New York (GMT-5)', value: 'America/New_York' },
+          { name: 'London (GMT+0)', value: 'Europe/London' },
+          { name: 'Berlin (GMT+1)', value: 'Europe/Berlin' },
+          { name: 'Tokyo (GMT+9)', value: 'Asia/Tokyo' },
           { name: 'Sydney (GMT+10)', value: 'Australia/Sydney' },
         )
         
