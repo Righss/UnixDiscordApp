@@ -13,10 +13,25 @@ module.exports = {
         .setRequired(true)
         .setMinLength(4)
         .setMaxLength(5)
-    ),
+    )
+    .addStringOption(option =>
+      option.setName('timezone')
+      .setDescription('Selecione a timezone')
+        .setRequired(true)
+        .addChoices(
+          { name: 'São Paulo (GMT-3)', value: 'America/Sao_Paulo' },
+          { name: 'Nova York (GMT-5)', value: 'America/New_York' },
+          { name: 'Londres (GMT+0)', value: 'Europe/London' },
+          { name: 'Berlim (GMT+1)', value: 'Europe/Berlin' },
+          { name: 'Tóquio (GMT+9)', value: 'Asia/Tokyo' },
+          { name: 'Sydney (GMT+10)', value: 'Australia/Sydney' },
+        )
+        
+    ),  
 
   async handle({ options, userId }) {
     const time = options?.find(o => o.name === 'time')?.value;
+    const tz = interaction.options.getString('timezone');
 
     const regex = /^([0-9]|[01]\d|2[0-3]):([0-5]\d)$/;
     if (!regex.test(time)) {
@@ -25,7 +40,7 @@ module.exports = {
 
     const [hour, minute] = time.split(':').map(Number);
 
-    const tz = (userId === '261987640470011915') ? 'America/Sao_Paulo' : 'Europe/London';
+    //const tz = (userId === '261987640470011915') ? 'America/Sao_Paulo' : 'Europe/London';
 
     const todayInTz = DateTime.now().setZone(tz);
     const dt = DateTime.fromObject({
