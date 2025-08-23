@@ -20,8 +20,8 @@ module.exports = {
         .setRequired(true)
         .addChoices(
           { name: 'Brazil (GMT-3)', value: 'America/Sao_Paulo' },
-          { name: 'New York (GMT-5)', value: 'America/New_York' },
           { name: 'London (GMT+0)', value: 'Europe/London' },
+          { name: 'New York (GMT-5)', value: 'America/New_York' },
           { name: 'Berlin (GMT+1)', value: 'Europe/Berlin' },
           { name: 'Tokyo (GMT+9)', value: 'Asia/Tokyo' },
           { name: 'Sydney (GMT+10)', value: 'Australia/Sydney' },
