@@ -19,13 +19,34 @@ module.exports = {
       .setDescription('Selecione a timezone')
         .setRequired(true)
         .addChoices(
+          // América
           { name: 'Brazil (GMT-3)', value: 'America/Sao_Paulo' },
           { name: 'London (GMT+0)', value: 'Europe/London' },
           { name: 'New York (GMT-5)', value: 'America/New_York' },
+          { name: 'Chicago (GMT-6)', value: 'America/Chicago' },
+          { name: 'Denver (GMT-7)', value: 'America/Denver' },
+          { name: 'Los Angeles (GMT-8)', value: 'America/Los_Angeles' },
+          { name: 'Anchorage (GMT-9)', value: 'America/Anchorage' },
+          { name: 'Honolulu (GMT-10)', value: 'Pacific/Honolulu' },
+
+          // Europa
           { name: 'Berlin (GMT+1)', value: 'Europe/Berlin' },
+          { name: 'Moscow (GMT+3)', value: 'Europe/Moscow' },
+
+          // Ásia
+          { name: 'Dubai (GMT+4)', value: 'Asia/Dubai' },
+          { name: 'New Delhi (GMT+5:30)', value: 'Asia/Kolkata' },
+          { name: 'Shanghai (GMT+8)', value: 'Asia/Shanghai' },
           { name: 'Tokyo (GMT+9)', value: 'Asia/Tokyo' },
+
+          // Oceania
           { name: 'Sydney (GMT+10)', value: 'Australia/Sydney' },
-        )
+          { name: 'Auckland (GMT+12)', value: 'Pacific/Auckland' },
+
+          // África
+          { name: 'Cairo (GMT+2)', value: 'Africa/Cairo' },
+          { name: 'Johannesburg (GMT+2)', value: 'Africa/Johannesburg' }
+            )
         
     ),  
 
